@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <!-- Affichage correct sur téléphone -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suivi-Flotte - Connexion</title>
+
+  <!-- Style CSS. Flask servira le dossier "css/" -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- .centre : centre le bloc au milieu de l'écran (défini dans style.css) -->
+  <main class="centre">
+    <!-- Formulaire de connexion
+      - method="post" : le mot de passe ne doit jamais apparaître dans l'URL
+      - action="/login" : route Flask qui traitera la demande -->
+    <form class="panneau" method="post" action="/login">
+
+      <div class="panneau-tete">
+        <h1>Suivi-Flotte</h1>
+      </div>
+
+      <div class="panneau-corps">
+
+        <!-- Zone de message d'erreur ("Identifiant ou mot de passe incorrect.") -->
+        <div class="message" role="alert"></div>
+
+        <!-- Champ identifiant -->
+        <div class="champ">
+          <label for="username">Identifiant</label>
+          <input id="username" name="username" autocomplete="username" required autofocus>
+        </div>
+
+        <!-- Champ mot de passe -->
+        <div class="champ">
+          <label for="password">Mot de passe</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+
+        <!-- Bouton d'envoi -->
+        <button class="bouton">Se connecter</button>
+
+        <p class="texte-doux">Un problème d'accès ? Contactez votre gestionnaire.</p>
+      </div>
+    </form>
+  </main>
+
+</body>
+</html>
