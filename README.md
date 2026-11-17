@@ -4,10 +4,16 @@ Application client/serveur en Python : des véhicules simulés envoient leur pos
 
 Équipe
 Membre	Pseudo GitHub	Rôle
+
 Raed AROUA	RaedAroua0	Serveur et protocole
+
 Rayan CHERIFI	raytchux	Serveur et protocole
+
 Nael KHARI	nlz1974k-commits	Base de données et authentification
+
 Jathushan RAJAKUMAR	rajakumarjathushan07-glitch	Base de données et authentification
+
+
 Architecture
 
 À compléter.
