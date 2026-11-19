@@ -1,4 +1,4 @@
-# Suivi de flotte géolocalisée --- SAÉ 3.02
+# Suivi de flotte géolocalisée - SAÉ 3.02
 
 Application client/serveur en Python : des véhicules simulés envoient
 leur position GPS en UDP à un serveur, qui les enregistre dans
@@ -27,6 +27,48 @@ PostgreSQL et les affiche sur une carte web.
 ## Protocole applicatif
 
 À compléter (format des messages, types, codes d'erreur).
+
+## Simulateur de véhicules
+
+Le simulateur rejoue des trajets GPS réalistes (routes de Villetaneuse et
+alentours) pour simuler un véhicule qui envoie sa position.
+
+### Fonctionnement
+
+1. `module_gen.py` tire un départ et une arrivée au hasard, demande l'itinéraire
+   à l'API OSRM (OpenStreetMap), puis calcule un point GPS toutes les 5 secondes.
+   Les 30 trajets sont enregistrés dans `data/trips.json`.
+2. `simulate_trips.py` choisit un trajet au hasard et affiche ses positions
+   (identifiant du véhicule, latitude, longitude, heure) en respectant le
+   rythme réel entre deux points.
+
+Les 30 trajets sont déjà fournis dans le dépôt : il n'est pas nécessaire de
+les régénérer.
+
+### Format de `trips.json`
+
+```json
+{"trips":[{"id":1,"distance_m":8322,"duration_s":856,"points":[[0,48.949622,2.241374],[5,48.949759,2.242097]]}]}
+```
+
+Chaque point est de la forme `[temps_en_secondes, latitude, longitude]`.
+
+### Utilisation
+
+```bash
+cd simulator
+python simulate_trips.py
+```
+
+La vitesse de lecture se règle avec `PLAYBACK_SPEED` dans `simulate_trips.py`
+(`1.0` = temps réel, `10.0` = dix fois plus vite).
+
+### Générer de nouveaux trajets (optionnel)
+
+```bash
+cd simulator
+python module_gen.py
+```
 
 ## Base de données
 
