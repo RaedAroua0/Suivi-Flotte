@@ -111,6 +111,20 @@ DB_PASSWORD=votre-mot-de-passe
 DB_HOST=localhost
 DB_PORT=5432
 ```
+## Sauvegarde et restauration
+
+Sauvegarde de la base (le dossier `sauvegardes/` est ignoré par Git) :
+
+```bash
+    pg_dump -Fc flotte -f sauvegardes/flotte.dump
+```
+
+Restauration dans une nouvelle base :
+
+```bash
+    createdb flotte_restauree
+    pg_restore -d flotte_restauree sauvegardes/flotte.dump
+```
 
 ## Authentification
 
